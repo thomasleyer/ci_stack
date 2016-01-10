@@ -1,0 +1,36 @@
+[[local|localrc]]
+HOST_IP=172.168.178.202
+SERVICE_HOST=172.168.178.202
+MYSQL_HOST=172.168.178.202
+RABBIT_HOST=172.168.178.202
+GLANCE_HOSTPORT=172.168.178.202:9292
+DATABASE_PASSWORD=password
+RABBIT_PASSWORD=password
+SERVICE_TOKEN=password
+SERVICE_PASSWORD=password
+ADMIN_PASSWORD=password
+
+Q_USE_SECGROUP=True
+FLOATING_RANGE=192.168.178.0/24
+FIXED_RANGE="10.0.0.0/24"
+Q_FLOATING_ALLOCATION_POOL=start=192.168.178.220,end=192.168.178.250
+PUBLIC_NETWORK_GATEWAY=192.168.178.1
+Q_L3_ENABLED=True
+PUBLIC_INTERFACE=eth0
+Q_USE_PROVIDERNET_FOR_PUBLIC=True
+OVS_PHYSICAL_BRIDGE=br-ex
+PUBLIC_BRIDGE=br-ex
+OVS_BRIDGE_MAPPINGS=public:br-ex
+
+LOGFILE=/opt/stack/stack.sh.log
+GIT_BASE=http://git.openstack.org
+
+disable_service n-net
+enable_service q-svc
+enable_service q-agt
+enable_service q-dhcp
+enable_service q-l3
+enable_service q-meta
+enable_service neutron
+# Optional, to enable tempest configuration as part of devstack
+enable_service tempest
